@@ -27,6 +27,9 @@ class SignalDict(QtCore.QObject):
     def items(self):
         return self.dict.items()
 
+    def keys(self):
+        return self.dict.keys()
+
     def pop(self, key):
         value = self.dict.pop(key)
         self.changed.emit()

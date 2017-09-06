@@ -17,3 +17,7 @@ class SignalDict(QtCore.QObject):
     def __setitem__(self, key, value):
         self.dict.__setitem__(key, value)
         self.changed.emit()
+
+    def setdefault(self, key, default=None):
+        self.dict.setdefault(key, default)
+        self.changed.emit()

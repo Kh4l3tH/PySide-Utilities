@@ -8,6 +8,9 @@ class SignalDict(QtCore.QObject):
         super().__init__()
         self.dict = dict()
 
+    def __getitem__(self, key):
+        return self.dict.__getitem__(key)
+
     def __iter__(self):
         return self.dict.__iter__()
 

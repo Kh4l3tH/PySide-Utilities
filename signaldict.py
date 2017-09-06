@@ -10,3 +10,7 @@ class SignalDict(QtCore.QObject):
 
     def __len__(self):
         return self.dict.__len__()
+
+    def __setitem__(self, key, value):
+        self.dict.__setitem__(key, value)
+        self.changed.emit()

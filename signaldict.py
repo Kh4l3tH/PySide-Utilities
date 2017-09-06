@@ -8,6 +8,10 @@ class SignalDict(QtCore.QObject):
         super().__init__()
         self.dict = dict(**kwargs)
 
+    def __delitem__(self, key):
+        self.dict.__delitem__(key)
+        self.changed.emit()
+
     def __getitem__(self, key):
         return self.dict.__getitem__(key)
 

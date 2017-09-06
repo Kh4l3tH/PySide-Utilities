@@ -4,9 +4,9 @@ from PySide import QtCore
 class SignalDict(QtCore.QObject):
     changed = QtCore.Signal()
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__()
-        self.dict = dict()
+        self.dict = dict(**kwargs)
 
     def __getitem__(self, key):
         return self.dict.__getitem__(key)

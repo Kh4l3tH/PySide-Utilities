@@ -24,6 +24,10 @@ class SignalDict(QtCore.QObject):
     def __str__(self):
         return self.dict.__str__()
 
+    def clear(self):
+        self.dict.clear()
+        self.changed.emit()
+
     def items(self):
         return self.dict.items()
 

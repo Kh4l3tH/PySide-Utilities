@@ -18,6 +18,10 @@ class SignalList(QtCore.QObject):
         self.list.append(x)
         self.changed.emit()
 
+    def clear(self):
+        self.list.clear()
+        self.changed.emit()
+
     def extend(self, iterable):
         self.list.extend(iterable)
         self.changed.emit()

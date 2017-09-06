@@ -8,6 +8,9 @@ class SignalList(QtCore.QObject):
         super().__init__()
         self.list = list()
 
+    def __getitem__(self, x):
+        return self.list.__getitem__(x)
+
     def __len__(self):
         return self.list.__len__()
 

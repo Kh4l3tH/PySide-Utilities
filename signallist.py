@@ -14,6 +14,9 @@ class SignalList(QtCore.QObject):
     def __len__(self):
         return self.list.__len__()
 
+    def __str__(self):
+        return self.list.__str__()
+
     def append(self, x):
         self.list.append(x)
         self.changed.emit()

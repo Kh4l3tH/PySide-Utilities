@@ -43,6 +43,11 @@ class SignalDict(QtCore.QObject):
         self.changed.emit()
         return value
 
+    def popitem(self):
+        pair = self.dict.popitem()
+        self.changed.emit()
+        return pair
+
     def setdefault(self, key, default=None):
         self.dict.setdefault(key, default)
         self.changed.emit()

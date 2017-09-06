@@ -35,3 +35,6 @@ class SignalDict(QtCore.QObject):
     def setdefault(self, key, default=None):
         self.dict.setdefault(key, default)
         self.changed.emit()
+
+    def values(self):
+        return self.dict.values()

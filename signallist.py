@@ -21,3 +21,8 @@ class SignalList(QtCore.QObject):
     def extend(self, iterable):
         self.list.extend(iterable)
         self.changed.emit()
+
+    def pop(self, index=-1):
+        value = self.list.pop(index)
+        self.changed.emit()
+        return value

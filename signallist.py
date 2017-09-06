@@ -4,9 +4,9 @@ from PySide import QtCore
 class SignalList(QtCore.QObject):
     changed = QtCore.Signal()
 
-    def __init__(self):
+    def __init__(self, iterable):
         super().__init__()
-        self.list = list()
+        self.list = list(iterable)
 
     def __getitem__(self, x):
         return self.list.__getitem__(x)

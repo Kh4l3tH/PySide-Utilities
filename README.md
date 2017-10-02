@@ -8,8 +8,6 @@ The purpose of a SignalList is to mimic the behaviour of a python list while sig
 ###### Example:
 See `examples/listview_list.py`
 
-**Note:** SignalList doesn't have all the functionality a list has yet, since I only added the features I needed myself
-
 ---
 ## SignalListModel
 Using a SignalList as a source, a SignalListModel ensures that a QListView always shows the latest data of a list
@@ -23,8 +21,6 @@ The purpose of a SignalDict is to mimic the behaviour of a python dict while sig
 
 ###### Example:
 See `examples/listview_dict.py`
-
-**Note:** SignalDict doesn't have all the functionality a dict has yet, since I only added the features I needed myself
 
 ---
 ## SignalDictModel

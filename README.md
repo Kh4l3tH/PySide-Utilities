@@ -23,6 +23,11 @@ The purpose of a SignalDict is to mimic the behaviour of a python dict while sig
 See `examples/listview_dict.py`
 
 ---
+## OrderedSignalDict
+The purpose of a OrderedSignalDict is to mimic the behaviour of a collections.OrderedDict while signalling changes.
+Addionally it has a sort feature similiar to pythons built-in lists
+
+---
 ## SignalDictModel
 Using a SignalDict as a source, a SignalDictModel ensures that a QListView always shows the latest data of a dict.
 It delivers the keys of the dict for Qt.DisplayRole and the values of the dict for Qt.UserRole

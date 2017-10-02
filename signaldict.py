@@ -3,8 +3,8 @@ import signal
 
 class SignalDict(dict):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
         self.changed = signal.Signal()
+        super().__init__(*args, **kwargs)
 
     def __delitem__(self, *args):
         super().__delitem__(*args)

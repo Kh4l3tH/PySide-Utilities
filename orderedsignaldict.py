@@ -37,6 +37,13 @@ class OrderedSignalDict(collections.OrderedDict):
         super().setdefault(*args)
         self.changed.emit()
 
+    def sort(self, key=None, reverse=False):
+        tmp = sorted(list(self.items()), key=lambda x: key(x[0], x[1]), reverse=reverse)
+        super().clear()
+        for k, v in tmp:
+            super().__setitem__(k, v)
+        self.changed.emit()
+
     def update(self, *args):
         super().update(*args)
         self.changed.emit()

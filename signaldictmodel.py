@@ -5,7 +5,7 @@ class SignalDictModel(QtCore.QAbstractListModel):
     def __init__(self, dict):
         super().__init__()
         self.dict = dict
-        self.dict.changed.connect(self.layoutChanged)
+        self.dict.changed.connect(self.layoutChanged.emit)
 
     def rowCount(self, parent):
         return len(self.dict)

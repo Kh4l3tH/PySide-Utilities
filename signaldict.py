@@ -1,56 +1,37 @@
-from PySide import QtCore
+import signal
 
 
-class SignalDict(QtCore.QObject):
-    changed = QtCore.Signal()
+class SignalDict(dict):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.changed = signal.Signal()
 
-    def __init__(self, **kwargs):
-        super().__init__()
-        self.dict = dict(**kwargs)
-
-    def __delitem__(self, key):
-        self.dict.__delitem__(key)
+    def __delitem__(self, *args):
+        super().__delitem__(*args)
         self.changed.emit()
 
-    def __getitem__(self, key):
-        return self.dict.__getitem__(key)
-
-    def __iter__(self):
-        return self.dict.__iter__()
-
-    def __len__(self):
-        return self.dict.__len__()
-
-    def __setitem__(self, key, value):
-        self.dict.__setitem__(key, value)
+    def __setitem__(self, *args):
+        super().__setitem__(*args)
         self.changed.emit()
-
-    def __str__(self):
-        return self.dict.__str__()
 
     def clear(self):
-        self.dict.clear()
+        super().clear()
         self.changed.emit()
 
-    def items(self):
-        return self.dict.items()
-
-    def keys(self):
-        return self.dict.keys()
-
-    def pop(self, key):
-        value = self.dict.pop(key)
+    def pop(self, *args):
+        value = super().pop(*args)
         self.changed.emit()
         return value
 
     def popitem(self):
-        pair = self.dict.popitem()
+        value = super().popitem()
         self.changed.emit()
-        return pair
+        return value
 
-    def setdefault(self, key, default=None):
-        self.dict.setdefault(key, default)
+    def setdefault(self, *args):
+        super().setdefault(*args)
         self.changed.emit()
 
-    def values(self):
-        return self.dict.values()
+    def update(self, *args):
+        super().update(*args)
+        self.changed.emit()

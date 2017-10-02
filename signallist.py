@@ -1,35 +1,58 @@
-from PySide import QtCore
+import signal
 
 
-class SignalList(QtCore.QObject):
-    changed = QtCore.Signal()
+class SignalList(list):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.changed = Signal()
 
-    def __init__(self, iterable=[]):
-        super().__init__()
-        self.list = list(iterable)
+    def __delitem__(self, *args):
+        super().__delitem__(*args)
+        self.changed.emit()
 
-    def __getitem__(self, x):
-        return self.list.__getitem__(x)
+    def __iadd__(self, *args):
+        lst = super().__iadd__(*args)
+        self.changed.emit()
+        return lst
 
-    def __len__(self):
-        return self.list.__len__()
+    def __imul__(self, *args):
+        lst = super().__imul__(*args)
+        self.changed.emit()
+        return lst
 
-    def __str__(self):
-        return self.list.__str__()
+    def __setitem__(self, *args):
+        super().__setitem__(*args)
+        self.changed.emit()
 
-    def append(self, x):
-        self.list.append(x)
+    def append(self, *args):
+        super().append(*args)
         self.changed.emit()
 
     def clear(self):
-        self.list.clear()
+        super().clear()
         self.changed.emit()
 
-    def extend(self, iterable):
-        self.list.extend(iterable)
+    def extend(self, *args):
+        super().extend(*args)
         self.changed.emit()
 
-    def pop(self, index=-1):
-        value = self.list.pop(index)
+    def insert(self, *args):
+        super().insert(*args)
+        self.changed.emit()
+
+    def pop(self, *args):
+        value = super().pop(*args)
         self.changed.emit()
         return value
+
+    def remove(self, *args):
+        super().remove(*args)
+        self.changed.emit()
+
+    def reverse(self):
+        super().reverse()
+        self.changed.emit()
+
+    def sort(self, **kwargs):
+        super().sort(**kwargs)
+        self.changed.emit()

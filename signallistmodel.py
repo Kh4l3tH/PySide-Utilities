@@ -5,7 +5,7 @@ class SignalListModel(QtCore.QAbstractListModel):
     def __init__(self, list):
         super().__init__()
         self.list = list
-        self.list.changed.connect(self.layoutChanged)
+        self.list.changed.connect(self.layoutChanged.emit)
 
     def rowCount(self, parent):
         return len(self.list)
